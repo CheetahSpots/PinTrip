@@ -2,13 +2,8 @@
 	box-sizing:border-box;
 }
 
-#header {
-	position:fixed;
-	top:0px;
-	left:0px;
-	width:100%;
-	height:30%;
-	background-color:lavender;
+.jumbotron {
+	text-align:center;
 }
 
 #masthead {
@@ -17,12 +12,16 @@
 	font-size:80px;
 }
 
-.dropdown {
+/*.dropdown {
 	float:left;
 	margin-left:20%;
 	margin-top:-4%;
-}
+}*/
 
+
+.cities {
+	text-align:center;
+}
 #searchbar {
 	margin-top:12%;
 	margin-left:auto;

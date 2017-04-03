@@ -1,8 +1,10 @@
-var cities = ["London", "New York"];
+var cities = [];
 
-var states = ["", "New York"];
+var states = [];
 
-var countries = ["England", "USA"];
+var countries = [];
+
+// $("#stateName").dropdown('toggle');
 
 function showCity() {
 
@@ -14,13 +16,23 @@ function showCity() {
 
 function makeButtons() {
 	//alert("hi!");
-	$(".body").empty();
+	$("#buttonDiv").empty();
 
 	for (var i = 0; i < cities.length; i++) {
-		var b = $("<button>");
-		b.addClass("city col-sm-3");
+		var b = $("<div>");
+		b.addClass("col-md-4");
+		b.addClass("cities");
 		b.text(cities[i] + ", " + states[i] + ", " + countries[i]);
-		$(".body").append(b);
+		var image = $("<img>");
+		image.attr("src", "http://placehold.it/250X250");
+		b.append(image);
+		var checkIt = $("<h2>");
+		var link = $("<a>");
+		link.addClass("btn btn-default");
+		link.text("Check it out!");
+		checkIt.append(link);
+		b.append(checkIt);
+		$("#buttonDiv").append(b);
 	}
 
 	$("#cityName").text("");
@@ -28,7 +40,7 @@ function makeButtons() {
 	$("#countryName").text("");
 }
 
-$("#search").on("click", function(event) {
+$(".search").on("click", function(event) {
 	event.preventDefault();
 
 	var city = $("#cityName").val().trim();
@@ -50,3 +62,5 @@ $("#search").on("click", function(event) {
 makeButtons();
 
 $(document).on("click", ".city", showCity);
+
+
