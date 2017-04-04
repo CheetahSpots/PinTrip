@@ -4,7 +4,24 @@
 
 .jumbotron {
 	text-align:center;
+	background-color: transparent;
+	font-family: "Oregano", cursive;
+	color: white;
+	font-size: 63px;
 }
+
+.jumbotron h1 {
+	font-size: 140px;
+}
+
+.subText {
+	font-size: 30px;
+}
+
+/*#wrapper {
+	/*width: 100%;*/
+/*	background-image: url("../images/bryce.png");
+}*/
 
 #masthead {
 	text-align:center;
@@ -18,6 +35,28 @@
 	margin-top:-4%;
 }*/
 
+#wrapper {
+	padding: 0;
+	margin: 0;
+	width: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: -1;
+}
+
+#wrapper img {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	z-index: 1;
+}
+
+/*#wrapper img.active {
+	z-index: 3;
+}*/
+
 
 .cities {
 	text-align:center;
@@ -28,10 +67,7 @@
 	margin-right:auto;
 }
 
-.buttonsArea {
-	margin-top:18%;
-	width:100%;
-}
+
 
 /*.city {
 	

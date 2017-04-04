@@ -9,13 +9,33 @@
     <title>PinTrip</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <link href="assets/css/style.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Oregano" rel="stylesheet">
+
   </head>
 
   <body>
     <div class="jumbotron">
       <div class="container">
+        <div id="wrapper">
+
+          <!-- <div id="background_cycler" > -->
+
+            <!-- <script type="text/javascript"> -->
+              <!-- // $('#background_cycler').hide();//hide the background while the images load, ready to fade in later -->
+            <!-- </script> -->
+
+            <img src="assets/images/atacama.png"/>
+            <img src="assets/images/BostonBackBay.png"/>
+            <img src="assets/images/bryce.png"/>
+            <img src="assets/images/cinque.png"/>
+            <img src="assets/images/fuji.png"/>
+            <img src="assets/images/hawaii.png"/>
+            <img src="assets/images/madagascar.png"/>
+            <img src="assets/images/sanfran.png"/>
+        </div>
+
         <h1>PinTrip</h1>
-        <p>Keep your dream trips handy!</p>
+        <p><span class="subText">Keep your dream trips handy!</span></p>
         <div class="dropdown">
         <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
           Your Pinned Trips
@@ -25,7 +45,7 @@
           <li><a href="#">City1</a></li>
         </ul>
       </div>
-        <div class="col-md-4">
+        <div class="col-md-4" align="center">
           <form class="navbar-form navbar-left">
             <div class="form-group">
           <input type="text" class="form-control" id="cityName" placeholder="Enter city name">
@@ -47,21 +67,22 @@
       </form>
       </div>
       <p><a class="btn btn-default search" href="#" role="button">Search</a></p>
-    </div>
-    </div>
+    </div> <!--closes container -->
+    </div> <!--closes jumbotron-->
     
     <br>
 
     <div class="container" id="buttonDiv">
-      <hr>
     </div>
 
       <footer>
         <p>&copy; 2017 CheetahSpots</p>
       </footer>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
     <script src="assets/javascript/app.js"></script>
+
   </body>
 </html>
 
