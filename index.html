@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>PinTrip</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <!--<link href="assets/css/style.css" rel="stylesheet">-->
+  </head>
+  <body>
+    <div class="jumbotron">
+      <div class="container">
+        <h1>PinTrip</h1>
+        <p>Keep your dream trips handy!</p>
+        <div class="dropdown">
+        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+          Your Pinned Trips
+          <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+          <li><a href="#">City1</a></li>
+        </ul>
+      </div>
+        <div class="col-md-4">
+          <form class="navbar-form navbar-left">
+            <div class="form-group">
+          <input type="text" class="form-control" id="cityName" placeholder="Enter city name">
+          
+        </div>
+      </form>
+        </div>
+        <div class="col-md-4">
+          <form class="navbar-form navbar-left">
+            <div class="form-group">
+          <input type="text" class="form-control" id="stateName" placeholder="Enter state name">
+        </div>
+        </form>
+        </div>
+        <div class="col-md-4">
+          <form class="navbar-form navbar-left">
+            <div class="form-group">
+          <input type="text" class="form-control" id="countryName" placeholder="Enter country name">
+        </div>
+      </form>
+      </div>
+      <p><a class="btn btn-default search" href="#" role="button">Search</a></p>
+    </div>
+    </div>
+    
+    <br>
+    <div class="container buttonDiv" id="btnDiv">
+      <hr>
+    </div>
+      <footer>
+        <p>&copy; 2017 CheetahSpots</p>
+      </footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="assets/javascript/app.js"></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDFVbIbEkDm4fWLcJwi_rb0aL-NTXzmJZ8&libraries=places"></script>
+  </body>
+  </html>
