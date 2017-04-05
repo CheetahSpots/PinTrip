@@ -60,7 +60,6 @@ function makeButtons() {
 });
 
 $(document).on("click", ".city", showCity);
-=======
 
 var states = [];
 
