@@ -1,0 +1,41 @@
+* {
+	box-sizing:border-box;
+}
+
+.jumbotron {
+	text-align:center;
+}
+
+#masthead {
+	text-align:center;
+	color:white;
+	font-size:80px;
+}
+
+/*.dropdown {
+	float:left;
+	margin-left:20%;
+	margin-top:-4%;
+}*/
+
+
+.cities {
+	text-align:center;
+}
+#searchbar {
+	margin-top:12%;
+	margin-left:auto;
+	margin-right:auto;
+}
+
+.buttonsArea {
+	margin-top:18%;
+	width:100%;
+}
+
+/*.city {
+	
+
+	background-image:url(http://placehold.it/250x250);
+}
+*/
