@@ -20,8 +20,7 @@ function makeButtons() {
         console.log(getID);
  $.ajax({
           url: getID,
-          dataType: 'JSON',
-          jsonpCallback: 'callback',
+          contentType: 'text/plain',
           method: "GET"
     }).done(function(ID) {
     //var query = ;
@@ -29,6 +28,7 @@ function makeButtons() {
     var photoRef = ID.results[0].photos[0].photo_reference;
     var photo = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference="+photoRef+"&key="+api;
     console.log(photo);
+        photo.crossOrigin = 'anonymous';
         var b = $("<div>");
         b.addClass("col-md-4");
         b.addClass("cities");
