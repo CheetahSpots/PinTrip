@@ -4,7 +4,7 @@ var countries = [];
 
 // $("#stateName").dropdown('toggle');
 //APIKey goes here locally
-//var apiKey = 
+var apiKey = 'aedfac0b150f3c79';
 function getWeather(country, city) {
     $("#btnDiv").empty();
     var queryURL = "http://api.wunderground.com/api/"+apiKey+"/forecast/q/"+country+"/"+city+".json"
@@ -12,6 +12,7 @@ function getWeather(country, city) {
         url: queryURL,
         method: "GET"
     }).done(function(response){ //need to add css classes/ids for formatting
+        console.log(response);
         var currentDay = response.forecast.simpleforecast.forecastday[0];
         var weatherImage = $("<img src="+currentDay.icon_url+">");          
         var lowTemp = currentDay.low.fahrenheit;
@@ -20,42 +21,40 @@ function getWeather(country, city) {
         newDiv.append(weatherImage);
         newDiv.append("<h2>Low: "+lowTemp+"\xB0F</h2>");
         newDiv.append("<h2>High: "+highTemp+"\xB0F</h2>");
-        // $("#view").html(newDiv);                         //rename accordingly
+        $("#btnDiv").append(newDiv);                         //rename accordingly
     });
 }
 
 $(".btn").on("click", function(event){
     event.preventDefault();
-    // var city = $("#city").val().trim().replace(" ","_");         uncomment these with correct id names
-    // var country = $("#country").val().trim().replace(" ","_");
-    // if(country==="United_States"){
-    //  country = $("#state").val().trim();
-    // }
-    getWeather("CA","San_Francisco");   
-    // getWeather(country,city);
+     var city = $("#cityName").val().trim().replace(" ","_");        // uncomment these with correct id names
+     var country = $("#countryName").val().trim().replace(" ","_");
+    if(country==="United_States"){
+      country = $("#stateName").val().trim();
+    }
+    //getWeather("CA","San_Francisco");   
+    getWeather(country,city);
 });
 function makeButtons() {
     //alert("hi!");
     $("#btnDiv").empty();
- 
-    for (var i = 0; i < cities.length; i++) {
+   for (var i = 0; i < cities.length; i++) { 
         var str = cities[i];
-        var replaced = str.replace(/\s/g, '+')  
-        var query = replaced;
         var api = 'AIzaSyBvIQ8yyx93va9LZdlfgdOnI7Ce9_gYbvM';
-        var getID = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=" + query +"&key=" + api;
+        var getID = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=" + str +"&key=" + api;
+        var q = encodeURIComponent('select * from html where url="'+getID+'"');
+        var yql = 'https://query.yahooapis.com/v1/public/yql?q='+q+'&format=json';
         console.log(getID);
+
  $.ajax({
-          url: getID,
+          url: yql,
           contentType: 'text/plain',
           method: "GET"
     }).done(function(ID) {
-    //var query = ;
-    console.log(ID);
-    var photoRef = ID.results[0].photos[0].photo_reference;
+    var obj = JSON.parse(ID.query.results.body);
+    var photoRef = obj.results[0].photos[0].photo_reference;
     var photo = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference="+photoRef+"&key="+api;
     console.log(photo);
-        photo.crossOrigin = 'anonymous';
         var b = $("<div>");
         b.addClass("col-md-4");
         b.addClass("cities");
@@ -83,17 +82,15 @@ function makeButtons() {
     states.push(state);
     countries.push(country);
     console.log(cities);
-    console.log(states);
-    console.log(countries);
     makeButtons();
 });
 
-$(document).on("click", ".city", getWeather);
+/*$(document).on("click", ".city");*/
 
 var index = 0;
 function changeBanner () {
-	[].forEach.call(document.images,function(v,i) {
-		document.images[i].hidden=i!==index
+	[].forEach.call(document.images,function(v,j) {
+		document.images[j].hidden=j!==index
 	});
 	index=(index + 1) % document.images.length;
 }
