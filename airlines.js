@@ -1,3 +1,4 @@
+var weatherAPIKey = 'aedfac0b150f3c79';
 var qpxAPIKey = "AIzaSyBCZ_Nx9Hdm4n-VOeVZvfltwPy76PXCp-8";
 var placesAPIKey = "AIzaSyAGAmaVfOaIUJD8InL1xVYy1hSahuGED-U";
 var airportcodes = getAirportList();
@@ -6,6 +7,23 @@ var oLon;
 var currentLocation = navigator.geolocation.getCurrentPosition(getPosition);
 
 
+function getWeather(lat, lon) {
+	var queryURL = "http://api.wunderground.com/api/"+weatherAPIKey+"/forecast/q/"+lat+","+lon+".json"
+	$.ajax({
+		url: queryURL,
+		method: "GET"
+	}).done(function(response){ //need to add css classes/ids for formatting
+		var currentDay = response.forecast.simpleforecast.forecastday[0];
+		var weatherImage = $("<img src="+currentDay.icon_url+">");			
+		var lowTemp = currentDay.low.fahrenheit;
+		var highTemp = currentDay.high.fahrenheit;
+		var newDiv = $("<div>");
+		newDiv.append(weatherImage);
+		newDiv.append("<h2>Low: "+lowTemp+"\xB0F</h2>");
+		newDiv.append("<h2>High: "+highTemp+"\xB0F</h2>");
+		$("#btnDiv").append(newDiv);
+	});
+}
 //Only getting current date for now, should probably let users choose date or use a date range
 function getCurrentDate(){
 	var currentDate = new Date();
