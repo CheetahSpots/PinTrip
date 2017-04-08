@@ -12,9 +12,7 @@
 
   var database = firebase.database();
 
-
-// $("#stateName").dropdown('toggle');
-//APIKey goes here locally
+//API key goes here locally
 var apiKey = 'aedfac0b150f3c79';
 function getWeather(country, city) {
     $("#btnDiv").empty();
@@ -38,8 +36,13 @@ function getWeather(country, city) {
 
 $(".btn").on("click", function(event){
     event.preventDefault();
-     var city = $("#cityName").val().trim().replace(" ","_");        // uncomment these with correct id names
-     var country = $("#countryName").val().trim().replace(" ","_");
+    var city = $("#cityName").val().trim().replace(" ","_");        // uncomment these with correct id names
+    var country = $("#countryName").val().trim().replace(" ","_");
+    cities.push(city);
+    states.push(state);
+    countries.push(country);
+    console.log(cities);
+
     if(country==="United_States"){
       country = $("#stateName").val().trim();
     }
@@ -49,7 +52,7 @@ $(".btn").on("click", function(event){
         country: country
     });
 
-    getWeather(country,city);
+    makeButtons();
 });
 
 function makeButtons() {
@@ -63,7 +66,7 @@ function makeButtons() {
         var yql = 'https://query.yahooapis.com/v1/public/yql?q='+q+'&format=json';
         console.log(getID);
 
- $.ajax({
+    $.ajax({
           url: yql,
           contentType: 'text/plain',
           method: "GET"
@@ -88,20 +91,10 @@ function makeButtons() {
         $("#btnDiv").append(b);
     })
    
+   getWeather(country,city);
+
  }
 }
-
-$(".search").on("click", function(event) {
-    event.preventDefault();
-    var city = $("#cityName").val().trim();
-    var state = $("#stateName").val().trim();
-    var country = $("#countryName").val().trim();
-    cities.push(city);
-    states.push(state);
-    countries.push(country);
-    console.log(cities);
-    makeButtons();
-});
 
 database.ref().on("child_added", function(childSnapshot) {
 
@@ -135,12 +128,13 @@ $(function () {
         "url(assets/images/sanfran.png)",
         "url(assets/images/sydney1600x800.jpg)",
         "url(assets/images/Vancouver1600x800.jpg)"];
+
     var current = 0;
 
     function nextBackground() {
         header.css(
             "background",
-            backgrounds[current= ++current % backgrounds.length]);
+            backgrounds[current = ++current % backgrounds.length]);
 
         setTimeout(nextBackground, 3000);
     }
