@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <header name = "Access-Control-Allow-Origin" value = "*" />
+    <title>PinTrip</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="assets/css/style.css" rel="stylesheet">
+  </head>
+    <link href="assets/css/style.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Oregano" rel="stylesheet">
+
+  </head>
+  <body>
+    <div class="wrap">
+    <div class="jumbotron">
+      <div class="container">
+        <div id="wrapper">
+
+          <!-- <div id="background_cycler" > -->
+
+            <!-- <script type="text/javascript"> -->
+              <!-- // $('#background_cycler').hide();//hide the background while the images load, ready to fade in later -->
+            <!-- </script> -->
+
+            <img src="assets/images/atacama.png"/>
+            <img src="assets/images/BostonBackBay.png"/>
+            <img src="assets/images/bryce.png"/>
+            <img src="assets/images/cinque.png"/>
+            <img src="assets/images/fuji.png"/>
+            <img src="assets/images/hawaii.png"/>
+            <img src="assets/images/madagascar.png"/>
+            <img src="assets/images/sanfran.png"/>
+
+            <img src="assets/images/sydney1600x800.jpg"/>
+            <img src="assets/images/Vancouver1600x800.jpg"/>
+
+
+        </div>
+
+        <h1>PinTrip</h1>
+        <p><span class="subText">Keep your dream trips handy!</span></p>
+
+
+        <div class="col-md-4" align="center">
+          <form class="navbar-form navbar-left">
+            <div class="form-group">
+          <input type="text" class="form-control" id="cityName" placeholder="Enter city name">
+        </div>
+      </form>
+        </div>
+        <div class="col-md-4">
+          <form class="navbar-form navbar-left">
+            <div class="form-group">
+          <input type="text" class="form-control" id="stateName" placeholder="Enter state name">
+        </div>
+        </form>
+        </div>
+        <div class="col-md-4">
+          <form class="navbar-form navbar-left">
+            <div class="form-group">
+          <input type="text" class="form-control" id="countryName" placeholder="Enter country name">
+        </div>
+      </form>
+      </div>
+      <p><a class="btn btn-default search" href="#" role="button">Search</a></p>
+    </div> <!--closes container -->
+    </div> <!--closes jumbotron-->
+    
+    <br>
+
+    <div class="container" id="btnDiv">
+
+      <div class="push"></div>
+      
+      <footer class="footer">
+
+        <p>&copy; 2017 CheetahSpots</p>
+      </footer>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="assets/javascript/app.js"></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDFVbIbEkDm4fWLcJwi_rb0aL-NTXzmJZ8&libraries=places"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="assets/javascript/app.js"></script>
+    </div>
+  </body>
+</html>
+
+
+
+
+
+<!-- <html>
+<head>
+	<meta charset="UTF-8">
+	<title>PinTrip</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<div class="row" id="header">
+<h1 id="masthead">PinTrip</h1>
+<div class="dropdown">
+  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+    Your Pinned Trips
+    <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+    <li><a href="#">City1</a></li>
+  </ul>
+</div>
+</div>
+
+<div class="row" id="searchbar">
+<div class="col-sm-4">
+<form class="navbar-form navbar-left">
+        <div class="form-group">
+          <input type="text" class="form-control" id="cityName" placeholder="Enter city name">
+        </div>
+      </form>
+</div>
+
+<div class="dropdown col-sm-4">
+  <button class="btn btn-default dropdown-toggle" type="button" id="stateName" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+    Select state (if U.S.)
+    <span class="caret"></span>
+  </button>
+  <ol class="dropdown-menu" aria-labelledby="dropdownMenu1">
+    <li><a href="#">AL</a></li>
+    <li><a href="#">AK</a></li>
+    <li><a href="#">AZ</a></li>
+    <li><a href="#">CA</a></li>
+    <li><a href="#">CO</a></li>
+    <li><a href="#">CT</a></li>
+    <li><a href="#">DE</a></li>
+    <li><a href="#">FL</a></li>
+    <li><a href="#">GA</a></li>
+    <li><a href="#">HI</a></li>
+    <li><a href="#">ID</a></li>
+    <li><a href="#">IL</a></li>
+    <li><a href="#">IN</a></li>
+    <li><a href="#">IA</a></li>
+    <li><a href="#">KS</a></li>
+    <li><a href="#">KY</a></li>
+    <li><a href="#">LA</a></li>
+    <li><a href="#">ME</a></li>
+    <li><a href="#">MD</a></li>
+    <li><a href="#">ME</a></li>
+    <li><a href="#">MD</a></li>
+    <li><a href="#">MA</a></li>
+    <li><a href="#">MI</a></li>
+    <li><a href="#">MN</a></li>
+    <li><a href="#">MS</a></li>
+    <li><a href="#">MO</a></li>
+    <li><a href="#">MT</a></li>
+    <li><a href="#">NE</a></li>
+    <li><a href="#">NV</a></li>
+    <li><a href="#">NH</a></li>
+    <li><a href="#">NJ</a></li>
+    <li><a href="#">NM</a></li>
+    <li><a href="#">NY</a></li>
+    <li><a href="#">NC</a></li>
+    <li><a href="#">ND</a></li>
+    <li><a href="#">OH</a></li>
+    <li><a href="#">OK</a></li>
+    <li><a href="#">OR</a></li>
+    <li><a href="#">PA</a></li>
+    <li><a href="#">RI</a></li>
+    <li><a href="#">SC</a></li>
+    <li><a href="#">SD</a></li>
+    <li><a href="#">TN</a></li>
+    <li><a href="#">TX</a></li>
+    <li><a href="#">UT</a></li>
+    <li><a href="#">VT</a></li>
+    <li><a href="#">VA</a></li>
+    <li><a href="#">WA</a></li> 
+    <li><a href="#">WV</a></li>
+    <li><a href="#">WI</a></li>
+    <li><a href="#">WY</a></li>
+  </ol>
+</div>
+
+<div class="col-sm-4">
+<form class="navbar-form navbar-left">
+        <div class="form-group">
+          <input type="text" class="form-control" id="countryName" placeholder="Enter country name">
+        </div>
+        <button type="submit" id="search" class="btn btn-default">Search</button>
+</form>
+</div>
+</div>
+
+
+<br>
+<br>
+
+
+<div class="body">
+<div class="weather"></div>
+<div class="planeTimes"></div>
+<div class="hotelPrices"></div>
+</div>
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+<script type="text/javascript" src="assets/javascript/app.js"></script>
+	
+</body>
+</html> -->
