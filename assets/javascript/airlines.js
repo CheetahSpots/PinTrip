@@ -144,11 +144,5 @@ function getAirportCode(lon, lat, range){
 $(".search").on("click",function(event){
 	event.preventDefault();
 	var city = $("#cityName").val().trim();
-	var country = $("#countryName").val().trim();
-	var state = $("#stateName").val().trim();
-	console.log(state);
-	if(state){
-		country = state;
-	}
-	getAirport(city,country);
+	getAirport(city);
 });

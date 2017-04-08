@@ -10,37 +10,25 @@
   
   firebase.initializeApp(config);
 
-  var database = firebase.database();
-
-
-// $("#stateName").dropdown('toggle');
-
-
+var database = firebase.database();
+var locales = [];
+var searchBox = new google.maps.places.SearchBox(document.getElementById('cityName'));
 $(".btn").on("click", function(event){
     event.preventDefault();
-     var city = $("#cityName").val().trim().replace(" ","_");        // uncomment these with correct id names
-     var country = $("#countryName").val().trim().replace(" ","_");
-    if(country==="United_States"){
-      country = $("#stateName").val().trim();
-    }
-    
     database.ref().push({
-        city: city,
-        country: country
+        Location: locales,
     });
 });
-
 function makeButtons() {
     //alert("hi!");
     $("#btnDiv").empty();
-   for (var i = 0; i < cities.length; i++) { 
-        var str = cities[i];
+   for (var i = 0; i < locales.length; i++) { 
+        var str = locales[i];
         var api = 'AIzaSyBvIQ8yyx93va9LZdlfgdOnI7Ce9_gYbvM';
         var getID = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=" + str +"&key=" + api;
         var q = encodeURIComponent('select * from html where url="'+getID+'"');
         var yql = 'https://query.yahooapis.com/v1/public/yql?q='+q+'&format=json';
         console.log(getID);
-
  $.ajax({
           url: yql,
           contentType: 'text/plain',
@@ -53,7 +41,7 @@ function makeButtons() {
         var b = $("<div>");
         b.addClass("col-md-4");
         b.addClass("cities");
-        b.text(cities[i] + ", " + states[i] + ", " + countries[i]);
+        b.text(locales[i]);
         var image = $('<img>');
         image.attr('src', photo);
         b.append(image);
@@ -72,29 +60,12 @@ function makeButtons() {
 $(".search").on("click", function(event) {
     event.preventDefault();
     var city = $("#cityName").val().trim();
-    var state = $("#stateName").val().trim();
-    var country = $("#countryName").val().trim();
-    cities.push(city);
-    states.push(state);
-    countries.push(country);
-    console.log(cities);
+    var replaced = city.replace(/\s/g, '+');
+    locales.push(replaced);
     makeButtons();
 });
 
 database.ref().on("child_added", function(childSnapshot) {
-
-    var cities = [];
-    var states = [];
-    var countries = [];
-
-    console.log(childSnapshot.val().city);
-    console.log(childSnapshot.val().country);
-
-    makeButtons(childSnapshot.val().city);
-    makeButtons(childSnapshot.val().country);
-
-    // cities.push(city);
-    // countries.push(country);
 
 }, function(errorObject) {
     console.log("Errors handled: " + errorObject.code);

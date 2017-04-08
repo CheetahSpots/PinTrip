@@ -22,36 +22,13 @@
         <p><span class="subText">Keep your dream trips handy!</span></p>
 
         <!-- <div class="row"> -->
-          <div class="col-md-4" align="center">
-            <form class="navbar-form navbar-left">
-              <div class="form-group">
-                <input type="text" class="form-control" id="cityName" placeholder="Enter city name">
-              </div>
+          <div class="col-md-5 col-md-offset-3" id='searchbox'>
+            <form class="navbar-form">
+                <input type="input" class="form-control" id="cityName" placeholder="Enter city name">
+                <a class="col-md-3 btn btn-default search" href="#" role="button" id='searchBtn'>Search</a>
             </form>
           </div> 
         <!-- </div>  closes row -->
-
-      <!-- <div class="row"> -->
-        <div class="col-md-4">
-          <form class="navbar-form navbar-left">
-            <div class="form-group">
-              <input type="text" class="form-control" id="stateName" placeholder="Enter state name">
-            </div>
-          </form>
-        </div>
-      <!-- </div>  closes row -->
-
-      <!-- <div class="row"> -->
-        <div class="col-md-4">
-          <form class="navbar-form navbar-left">
-            <div class="form-group">
-              <input type="text" class="form-control" id="countryName" placeholder="Enter country name">
-            </div>
-          </form>
-        </div>
-      <!-- </div> closes row -->
-
-      <p><a class="btn btn-default search" href="#" role="button">Search</a></p>
 </div>
 </div> <!--closing container -->   
 </div> <!--closes jumbotron-->
@@ -63,15 +40,13 @@
       <footer class="footer">
         <p>&copy; 2017 CheetahSpots</p>
       </footer>
-
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDFVbIbEkDm4fWLcJwi_rb0aL-NTXzmJZ8&libraries=places"></script>
     <script src="https://www.gstatic.com/firebasejs/3.7.3/firebase.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="assets/javascript/app.js"></script>
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDFVbIbEkDm4fWLcJwi_rb0aL-NTXzmJZ8&libraries=places"></script>
     <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
     <script src="assets/javascript/airportcodes.js"></script>
     <script src="assets/javascript/airlines.js"></script>
-    <script src="assets/javascript/app.js"></script>
     </div> <!-- closes wrap -->
   </body>
 </html>
