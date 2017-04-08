@@ -1,6 +1,19 @@
-var cities = [];
-var states = [];
-var countries = [];
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyBxlykkSWpKiQdKP_PUOcCNTS8YCab300A",
+    authDomain: "pintrip-e6a0b.firebaseapp.com",
+    databaseURL: "https://pintrip-e6a0b.firebaseio.com",
+    projectId: "pintrip-e6a0b",
+    storageBucket: "pintrip-e6a0b.appspot.com",
+    messagingSenderId: "656435386797"
+  };
+  
+  firebase.initializeApp(config);
+
+  var database = firebase.database();
+
+
+
 
 // $("#stateName").dropdown('toggle');
 //APIKey goes here locally
@@ -32,9 +45,15 @@ $(".btn").on("click", function(event){
     if(country==="United_States"){
       country = $("#stateName").val().trim();
     }
-    //getWeather("CA","San_Francisco");   
+    
+    database.ref().push({
+        city: city,
+        country: country
+    });
+
     getWeather(country,city);
 });
+
 function makeButtons() {
     //alert("hi!");
     $("#btnDiv").empty();
@@ -73,7 +92,8 @@ function makeButtons() {
    
  }
 }
- $(".search").on("click", function(event) {
+
+$(".search").on("click", function(event) {
     event.preventDefault();
     var city = $("#cityName").val().trim();
     var state = $("#stateName").val().trim();
@@ -85,16 +105,61 @@ function makeButtons() {
     makeButtons();
 });
 
-/*$(document).on("click", ".city");*/
+database.ref().on("child_added", function(childSnapshot) {
 
-var index = 0;
-function changeBanner () {
-	[].forEach.call(document.images,function(v,j) {
-		document.images[j].hidden=j!==index
-	});
-	index=(index + 1) % document.images.length;
-}
-window.onload = function() {setInterval(changeBanner, 5000)};
+    var cities = [];
+    var states = [];
+    var countries = [];
+
+    console.log(childSnapshot.val().city);
+    console.log(childSnapshot.val().country);
+
+    makeButtons(childSnapshot.val().city);
+    makeButtons(childSnapshot.val().country);
+
+    // cities.push(city);
+    // countries.push(country);
+
+}, function(errorObject) {
+    console.log("Errors handled: " + errorObject.code);
+});
+
+$(function () {
+    var header = $(".container");
+    var backgrounds = [
+        "url(assets/images/atacama.png)",
+        "url(assets/images/BostonBackBay.png)",
+        "url(assets/images/bryce.png)",
+        "url(assets/images/cinque.png)",
+        "url(assets/images/fuji.png)",
+        "url(assets/images/hawaii.png)",
+        "url(assets/images/madagascar.png)",
+        "url(assets/images/sanfran.png)",
+        "url(assets/images/sydney1600x800.jpg)",
+        "url(assets/images/Vancouver1600x800.jpg)"];
+    var current = 0;
+
+    function nextBackground() {
+        header.css(
+            "background",
+            backgrounds[current= ++current % backgrounds.length]);
+
+        setTimeout(nextBackground, 3000);
+    }
+    setTimeout(nextBackground, 3000);
+    header.css("background", backgrounds[0]);
+})
+
+// var index = 0;
+
+// function changeBanner () {
+// 	[].forEach.call(document.images,function(v,j) {
+// 		document.images[j].hidden=j!==index
+// 	});
+// 	index=(index + 1) % document.images.length;
+// }
+
+// window.onload = function() {setInterval(changeBanner, 5000)};
 
 
 
