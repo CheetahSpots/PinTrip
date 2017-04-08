@@ -14,27 +14,7 @@
 
 
 // $("#stateName").dropdown('toggle');
-//APIKey goes here locally
-var apiKey = 'aedfac0b150f3c79';
-function getWeather(country, city) {
-    $("#btnDiv").empty();
-    var queryURL = "http://api.wunderground.com/api/"+apiKey+"/forecast/q/"+country+"/"+city+".json"
-    $.ajax({
-        url: queryURL,
-        method: "GET"
-    }).done(function(response){ //need to add css classes/ids for formatting
-        console.log(response);
-        var currentDay = response.forecast.simpleforecast.forecastday[0];
-        var weatherImage = $("<img src="+currentDay.icon_url+">");          
-        var lowTemp = currentDay.low.fahrenheit;
-        var highTemp = currentDay.high.fahrenheit;
-        var newDiv = $("<div>");
-        newDiv.append(weatherImage);
-        newDiv.append("<h2>Low: "+lowTemp+"\xB0F</h2>");
-        newDiv.append("<h2>High: "+highTemp+"\xB0F</h2>");
-        $("#btnDiv").append(newDiv);                         //rename accordingly
-    });
-}
+
 
 $(".btn").on("click", function(event){
     event.preventDefault();
