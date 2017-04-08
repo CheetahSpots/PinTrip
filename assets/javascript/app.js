@@ -9,7 +9,6 @@
   };
   
   firebase.initializeApp(config);
-
 var database = firebase.database();
 var locales = [];
 var searchBox = new google.maps.places.SearchBox(document.getElementById('cityName'));
@@ -18,6 +17,10 @@ $(".btn").on("click", function(event){
     database.ref().push({
         Location: locales,
     });
+
+
+    makeButtons();
+
 });
 function makeButtons() {
     //alert("hi!");
@@ -54,9 +57,10 @@ function makeButtons() {
         $("#btnDiv").append(b);
     })
    
+   getWeather(country,city);
+
  }
 }
-
 $(".search").on("click", function(event) {
     event.preventDefault();
     var city = $("#cityName").val().trim();
@@ -84,12 +88,13 @@ $(function () {
         "url(assets/images/sanfran.png)",
         "url(assets/images/sydney1600x800.jpg)",
         "url(assets/images/Vancouver1600x800.jpg)"];
+
     var current = 0;
 
     function nextBackground() {
         header.css(
             "background",
-            backgrounds[current= ++current % backgrounds.length]);
+            backgrounds[current = ++current % backgrounds.length]);
 
         setTimeout(nextBackground, 3000);
     }
