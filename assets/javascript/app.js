@@ -12,16 +12,38 @@
 
   var database = firebase.database();
 
-var cities = [];
-var states = [];
-var countries = [];
-// $("#stateName").dropdown('toggle');
 
+//API key goes here locally
+var apiKey = 'aedfac0b150f3c79';
+function getWeather(country, city) {
+    $("#btnDiv").empty();
+    var queryURL = "http://api.wunderground.com/api/"+apiKey+"/forecast/q/"+country+"/"+city+".json"
+    $.ajax({
+        url: queryURL,
+        method: "GET"
+    }).done(function(response){ //need to add css classes/ids for formatting
+        console.log(response);
+        var currentDay = response.forecast.simpleforecast.forecastday[0];
+        var weatherImage = $("<img src="+currentDay.icon_url+">");          
+        var lowTemp = currentDay.low.fahrenheit;
+        var highTemp = currentDay.high.fahrenheit;
+        var newDiv = $("<div>");
+        newDiv.append(weatherImage);
+        newDiv.append("<h2>Low: "+lowTemp+"\xB0F</h2>");
+        newDiv.append("<h2>High: "+highTemp+"\xB0F</h2>");
+        $("#btnDiv").append(newDiv);                         //rename accordingly
+    });
+}
 
 $(".btn").on("click", function(event){
     event.preventDefault();
-     var city = $("#cityName").val().trim().replace(" ","_");        // uncomment these with correct id names
-     var country = $("#countryName").val().trim().replace(" ","_");
+    var city = $("#cityName").val().trim().replace(" ","_");        // uncomment these with correct id names
+    var country = $("#countryName").val().trim().replace(" ","_");
+    cities.push(city);
+    states.push(state);
+    countries.push(country);
+    console.log(cities);
+
     if(country==="United_States"){
       country = $("#stateName").val().trim();
     }
@@ -30,6 +52,10 @@ $(".btn").on("click", function(event){
         city: city,
         country: country
     });
+
+
+    makeButtons();
+
 });
 
 function makeButtons() {
@@ -43,7 +69,7 @@ function makeButtons() {
         var yql = 'https://query.yahooapis.com/v1/public/yql?q='+q+'&format=json';
         console.log(getID);
 
- $.ajax({
+    $.ajax({
           url: yql,
           contentType: 'text/plain',
           method: "GET"
@@ -68,20 +94,10 @@ function makeButtons() {
         $("#btnDiv").append(b);
     })
    
+   getWeather(country,city);
+
  }
 }
-
-$(".search").on("click", function(event) {
-    event.preventDefault();
-    var city = $("#cityName").val().trim();
-    var state = $("#stateName").val().trim();
-    var country = $("#countryName").val().trim();
-    cities.push(city);
-    states.push(state);
-    countries.push(country);
-    console.log(cities);
-    makeButtons();
-});
 
 database.ref().on("child_added", function(childSnapshot) {
 
@@ -115,12 +131,13 @@ $(function () {
         "url(assets/images/sanfran.png)",
         "url(assets/images/sydney1600x800.jpg)",
         "url(assets/images/Vancouver1600x800.jpg)"];
+
     var current = 0;
 
     function nextBackground() {
         header.css(
             "background",
-            backgrounds[current= ++current % backgrounds.length]);
+            backgrounds[current = ++current % backgrounds.length]);
 
         setTimeout(nextBackground, 3000);
     }
