@@ -12,7 +12,9 @@
 
   var database = firebase.database();
 
-
+var cities = [];
+var states = [];
+var countries = [];
 // $("#stateName").dropdown('toggle');
 
 
