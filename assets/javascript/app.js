@@ -28,8 +28,6 @@ $(".btn").on("click", function(event){
         city: city,
         country: country
     });
-
-    getWeather(country,city);
 });
 
 function makeButtons() {
