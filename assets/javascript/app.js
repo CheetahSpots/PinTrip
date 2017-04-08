@@ -9,67 +9,30 @@
   };
   
   firebase.initializeApp(config);
-
-  var database = firebase.database();
-
-
-//API key goes here locally
-var apiKey = 'aedfac0b150f3c79';
-function getWeather(country, city) {
-    $("#btnDiv").empty();
-    var queryURL = "http://api.wunderground.com/api/"+apiKey+"/forecast/q/"+country+"/"+city+".json"
-    $.ajax({
-        url: queryURL,
-        method: "GET"
-    }).done(function(response){ //need to add css classes/ids for formatting
-        console.log(response);
-        var currentDay = response.forecast.simpleforecast.forecastday[0];
-        var weatherImage = $("<img src="+currentDay.icon_url+">");          
-        var lowTemp = currentDay.low.fahrenheit;
-        var highTemp = currentDay.high.fahrenheit;
-        var newDiv = $("<div>");
-        newDiv.append(weatherImage);
-        newDiv.append("<h2>Low: "+lowTemp+"\xB0F</h2>");
-        newDiv.append("<h2>High: "+highTemp+"\xB0F</h2>");
-        $("#btnDiv").append(newDiv);                         //rename accordingly
-    });
-}
-
+var database = firebase.database();
+var locales = [];
+var searchBox = new google.maps.places.SearchBox(document.getElementById('cityName'));
 $(".btn").on("click", function(event){
     event.preventDefault();
-    var city = $("#cityName").val().trim().replace(" ","_");        // uncomment these with correct id names
-    var country = $("#countryName").val().trim().replace(" ","_");
-    cities.push(city);
-    states.push(state);
-    countries.push(country);
-    console.log(cities);
-
-    if(country==="United_States"){
-      country = $("#stateName").val().trim();
-    }
-    
     database.ref().push({
-        city: city,
-        country: country
+        Location: locales,
     });
 
 
     makeButtons();
 
 });
-
 function makeButtons() {
     //alert("hi!");
     $("#btnDiv").empty();
-   for (var i = 0; i < cities.length; i++) { 
-        var str = cities[i];
+   for (var i = 0; i < locales.length; i++) { 
+        var str = locales[i];
         var api = 'AIzaSyBvIQ8yyx93va9LZdlfgdOnI7Ce9_gYbvM';
         var getID = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=" + str +"&key=" + api;
         var q = encodeURIComponent('select * from html where url="'+getID+'"');
         var yql = 'https://query.yahooapis.com/v1/public/yql?q='+q+'&format=json';
         console.log(getID);
-
-    $.ajax({
+ $.ajax({
           url: yql,
           contentType: 'text/plain',
           method: "GET"
@@ -81,7 +44,7 @@ function makeButtons() {
         var b = $("<div>");
         b.addClass("col-md-4");
         b.addClass("cities");
-        b.text(cities[i] + ", " + states[i] + ", " + countries[i]);
+        b.text(locales[i]);
         var image = $('<img>');
         image.attr('src', photo);
         b.append(image);
@@ -98,21 +61,15 @@ function makeButtons() {
 
  }
 }
+$(".search").on("click", function(event) {
+    event.preventDefault();
+    var city = $("#cityName").val().trim();
+    var replaced = city.replace(/\s/g, '+');
+    locales.push(replaced);
+    makeButtons();
+});
 
 database.ref().on("child_added", function(childSnapshot) {
-
-    var cities = [];
-    var states = [];
-    var countries = [];
-
-    console.log(childSnapshot.val().city);
-    console.log(childSnapshot.val().country);
-
-    makeButtons(childSnapshot.val().city);
-    makeButtons(childSnapshot.val().country);
-
-    // cities.push(city);
-    // countries.push(country);
 
 }, function(errorObject) {
     console.log("Errors handled: " + errorObject.code);

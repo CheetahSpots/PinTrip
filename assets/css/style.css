@@ -51,3 +51,13 @@
     font-weight: 300;
     border-top: solid 1px #111163;
 }
+#searchBtn{
+	float: left;
+
+}
+#cityName{
+	float: left;
+}
+#searchbox{
+	padding-bottom: 5%;
+}
