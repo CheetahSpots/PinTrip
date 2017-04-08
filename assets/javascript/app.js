@@ -12,6 +12,7 @@
 
   var database = firebase.database();
 
+
 //API key goes here locally
 var apiKey = 'aedfac0b150f3c79';
 function getWeather(country, city) {
@@ -52,7 +53,9 @@ $(".btn").on("click", function(event){
         country: country
     });
 
+
     makeButtons();
+
 });
 
 function makeButtons() {
