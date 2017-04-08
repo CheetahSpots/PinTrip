@@ -13,8 +13,6 @@
   var database = firebase.database();
 
 
-
-
 // $("#stateName").dropdown('toggle');
 //APIKey goes here locally
 var apiKey = 'aedfac0b150f3c79';
@@ -150,16 +148,7 @@ $(function () {
     header.css("background", backgrounds[0]);
 })
 
-// var index = 0;
 
-// function changeBanner () {
-// 	[].forEach.call(document.images,function(v,j) {
-// 		document.images[j].hidden=j!==index
-// 	});
-// 	index=(index + 1) % document.images.length;
-// }
-
-// window.onload = function() {setInterval(changeBanner, 5000)};
 
 
 
