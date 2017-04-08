@@ -6,8 +6,6 @@
 	text-align:center;
 	background-color: transparent;
 	font-family: "Oregano", cursive;
-	color: white;
-	font-size: 63px;
 }
 
 .jumbotron h1 {
@@ -15,48 +13,20 @@
 }
 
 .subText {
-	font-size: 30px;
+	font-size: 40px;
 }
 
-/*#wrapper {
-	/*width: 100%;*/
-/*	background-image: url("../images/bryce.png");
-}*/
-
-#masthead {
+.masthead {
+	width:1150px;
 	text-align:center;
 	color:white;
 	font-size:80px;
+	color:white;
 }
 
-/*.dropdown {
-	float:left;
-	margin-left:20%;
-	margin-top:-4%;
-}*/
-
-#wrapper {
-	padding: 0;
-	margin: 0;
-	width: 100%;
-	position: absolute;
-	top: 0;
-	left: 0;
-	z-index: -1;
+#cityName, #stateName, #countryName {
+	font-size:30px;
 }
-
-#wrapper img {
-	position: absolute;
-	left: 0;
-	top: 0;
-	width: 100%;
-	z-index: 1;
-}
-
-/*#wrapper img.active {
-	z-index: 3;
-}*/
-
 
 .cities {
 	text-align:center;
@@ -66,26 +36,6 @@
 	margin-left:auto;
 	margin-right:auto;
 }
-
-
-/*html, body {
-  height: 100%;
-  margin: 0;
-}
-.wrap {
-  min-height: 100%;
-
-  /* Equal to height of footer */
-   /*But also accounting for potential margin-bottom of last child */
-  /*margin-bottom: -50px;*/
-/*}*/
-/*.footer,
-.push {
-  height: 33px;
-  background-color: #1d407b;
-  color: white;
-  text-align: center;
-}*/
 
 
 .footer, .push {
@@ -101,10 +51,3 @@
     font-weight: 300;
     border-top: solid 1px #111163;
 }
-
-/*.city {
-	
-
-	background-image:url(http://placehold.it/250x250);
-}
-*/

@@ -125,7 +125,7 @@ database.ref().on("child_added", function(childSnapshot) {
 });
 
 $(function () {
-    var header = $(".container");
+    var header = $(".masthead");
     var backgrounds = [
         "url(assets/images/atacama.png)",
         "url(assets/images/BostonBackBay.png)",
