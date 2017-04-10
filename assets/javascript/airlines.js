@@ -8,7 +8,7 @@ var currentLocation = navigator.geolocation.getCurrentPosition(getPosition);
 
 
 function getWeather(lat, lon) {
-	var queryURL = "http://api.wunderground.com/api/"+weatherAPIKey+"/forecast/q/"+lat+","+lon+".json"
+	var queryURL = "https://api.wunderground.com/api/"+weatherAPIKey+"/forecast/q/"+lat+","+lon+".json"
 		$.ajax({
 			url: queryURL,
 			method: "GET"
