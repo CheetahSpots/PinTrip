@@ -37,21 +37,20 @@ function makeButtons() {
                     var b = $("<div>");
                     b.addClass("col-md-4");
                     b.addClass("cities");
-                    b.text(locales[i]);
                     var image = $('<img>');
                     image.attr('src', photo);
                     b.append(image);
                     var checkIt = $("<h2>");
                     var link = $("<a>");
                     link.addClass("btn btn-default");
-                    link.text("Check it out!");
+                    link.text(str);
                     checkIt.append(link);
                     b.append(checkIt);
                     $("#btnDiv").append(b);
                 });
 
             getWeather();
-            
+
         }
 }
 
