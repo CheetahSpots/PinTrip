@@ -64,4 +64,10 @@
 
 .weatherDiv {
 	border:black 1px solid;
+	width: 500px;
+}
+
+.planeDiv {
+	border:black 1px solid;
+	width: 500px;
 }
