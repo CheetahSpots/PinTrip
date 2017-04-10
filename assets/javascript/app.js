@@ -12,6 +12,7 @@
 var database = firebase.database();
 var locales = [];
 var searchBox = new google.maps.places.SearchBox(document.getElementById('cityName'));
+
 $(".btn").on("click", function(event){
     event.preventDefault();
     database.ref().push({
@@ -22,8 +23,9 @@ $(".btn").on("click", function(event){
     makeButtons();
 
 });
+
+
 function makeButtons() {
-    //alert("hi!");
     $("#btnDiv").empty();
    for (var i = 0; i < locales.length; i++) { 
         var str = locales[i];
@@ -56,8 +58,8 @@ function makeButtons() {
         b.append(checkIt);
         $("#btnDiv").append(b);
     })
-   
-   getWeather(country,city);
+
+    getWeather();
 
  }
 }
@@ -70,6 +72,8 @@ $(".search").on("click", function(event) {
 });
 
 database.ref().on("child_added", function(childSnapshot) {
+
+    makeButtons(locales);
 
 }, function(errorObject) {
     console.log("Errors handled: " + errorObject.code);

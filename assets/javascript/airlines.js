@@ -18,6 +18,7 @@ function getWeather(lat, lon) {
 		var lowTemp = currentDay.low.fahrenheit;
 		var highTemp = currentDay.high.fahrenheit;
 		var newDiv = $("<div>");
+		newDiv.addClass("weatherDiv");
 		newDiv.append(weatherImage);
 		newDiv.append("<h2>Low: "+lowTemp+"\xB0F</h2>");
 		newDiv.append("<h2>High: "+highTemp+"\xB0F</h2>");

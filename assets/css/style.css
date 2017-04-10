@@ -61,3 +61,7 @@
 #searchbox{
 	padding-bottom: 5%;
 }
+
+.weatherDiv {
+	border:black 1px solid;
+}
