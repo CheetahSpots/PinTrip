@@ -5,8 +5,6 @@ if (!Array.isArray(locales)) {
     locales = [];
 }
 
-
-
 function makeButtons() {
    
    $("#btnDiv").empty();
@@ -17,15 +15,16 @@ function makeButtons() {
         insideLocales = [];
     }
 
-        for (var i = 0; i < locales.length; i++) { 
-            var str = locales[i];
-            var api = 'AIzaSyBvIQ8yyx93va9LZdlfgdOnI7Ce9_gYbvM';
-            var getID = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=" + str +"&key=" + api;
-            var q = encodeURIComponent('select * from html where url="'+getID+'"');
-            var yql = 'https://query.yahooapis.com/v1/public/yql?q='+q+'&format=json';
-            console.log(getID);
-                
-                $.ajax({
+    for (var i = 0; i < locales.length; i++) { 
+        var str = locales[i];
+        var api = 'AIzaSyBvIQ8yyx93va9LZdlfgdOnI7Ce9_gYbvM';
+        var getID = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=" + str +"&key=" + api;
+        var q = encodeURIComponent('select * from html where url="'+getID+'"');
+        var yql = 'https://query.yahooapis.com/v1/public/yql?q='+q+'&format=json';
+       
+        //console.log(getID);
+
+            $.ajax({
                     url: yql,
                     contentType: 'text/plain',
                     method: "GET"
@@ -38,6 +37,7 @@ function makeButtons() {
                     b.addClass("col-md-4");
                     b.addClass("cities");
                     var image = $('<img>');
+                    image.addClass("photos");
                     image.attr('src', photo);
                     b.append(image);
                     var checkIt = $("<h2>");
@@ -48,11 +48,11 @@ function makeButtons() {
                     b.append(checkIt);
                     $("#btnDiv").append(b);
                 });
-
-            getWeather();
-
-        }
+        
+        //getWeather();
+    }
 }
+
 
 makeButtons();
 
