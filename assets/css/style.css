@@ -30,7 +30,12 @@
 
 .cities {
 	text-align:center;
+	border: 1px black solid;
+	height:275px;
+	width:275px;
+	margin:5px;
 }
+
 #searchbar {
 	margin-top:12%;
 	margin-left:auto;
@@ -43,7 +48,7 @@
     background-color: rgba(29, 64, 123, 0.61);
     color: white;
     text-align: center;
-    position: absolute;
+    position: fixed;
     bottom: 0;
     left: 0;
     right: 0;
@@ -63,8 +68,13 @@
 }
 
 .weatherDiv {
-	border:black 1px solid;
-	width: 500px;
+	clear:both;
+}
+
+.photos {
+	width:100%;
+	height:50%;
+	margin-top:10px;
 }
 
 .planeDiv {

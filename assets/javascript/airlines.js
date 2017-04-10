@@ -23,7 +23,7 @@ function getWeather(lat, lon) {
 			newDiv.append(weatherImage);
 			newDiv.append("<h2>Low: "+lowTemp+"\xB0F</h2>");
 			newDiv.append("<h2>High: "+highTemp+"\xB0F</h2>");
-			$("#btnDiv").append(newDiv);
+			b.append(newDiv);
 		});
 }
 //Only getting current date for now, should probably let users choose date or use a date range
