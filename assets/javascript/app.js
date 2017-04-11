@@ -103,7 +103,7 @@ $(function () {
 
     $('#content-slider').slidesjs({
     width: 1920,
-    height: 520,
+    height: 500,
     effect: {
         slide:{ speed: 800}
     },
