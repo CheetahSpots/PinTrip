@@ -5,6 +5,37 @@ if (!Array.isArray(locales)) {
     locales = [];
 }
 
+function getPhoto(str,b){
+    var api = 'AIzaSyBvIQ8yyx93va9LZdlfgdOnI7Ce9_gYbvM';
+    var getID = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=" + str +"&key=" + api;
+    var q = encodeURIComponent('select * from html where url="'+getID+'"');
+    var yql = 'https://query.yahooapis.com/v1/public/yql?q='+q+'&format=json';
+    $.ajax({
+            url: yql,
+            contentType: 'text/plain',
+            method: "GET"
+        }).done(function(ID) {
+            console.log(ID);
+            var obj = JSON.parse(ID.query.results.body);
+            var photoRef = obj.results[0].photos[0].photo_reference;
+            var photo = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference="+photoRef+"&key="+api;
+            console.log(photo);
+            b.addClass("col-md-4");
+            b.addClass("cities");
+            var image = $('<img>');
+            image.addClass("photos");
+            image.attr('src', photo);
+            b.append(image);
+            var checkIt = $("<h2>");
+            var link = $("<a>");
+            link.addClass("btn btn-default");
+            link.text(str);
+            checkIt.append(link);
+            b.append(checkIt);
+        });
+}
+
+
 function makeButtons() {
    
    $("#btnDiv").empty();
@@ -15,46 +46,31 @@ function makeButtons() {
         insideLocales = [];
     }
 
+
+
     for (var i = 0; i < locales.length; i++) { 
         var str = locales[i];
-        var api = 'AIzaSyBvIQ8yyx93va9LZdlfgdOnI7Ce9_gYbvM';
-        var getID = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=" + str +"&key=" + api;
-        var q = encodeURIComponent('select * from html where url="'+getID+'"');
-        var yql = 'https://query.yahooapis.com/v1/public/yql?q='+q+'&format=json';
-       
-        //console.log(getID);
-
-            $.ajax({
-                    url: yql,
-                    contentType: 'text/plain',
-                    method: "GET"
-                }).done(function(ID) {
-                    var obj = JSON.parse(ID.query.results.body);
-                    var photoRef = obj.results[0].photos[0].photo_reference;
-                    var photo = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference="+photoRef+"&key="+api;
-                    console.log(photo);
-                    var b = $("<div>");
-                    b.addClass("col-md-4");
-                    b.addClass("cities");
-                    var image = $('<img>');
-                    image.addClass("photos");
-                    image.attr('src', photo);
-                    b.append(image);
-                    var checkIt = $("<h2>");
-                    var link = $("<a>");
-                    link.addClass("btn btn-default");
-                    link.text(str);
-                    checkIt.append(link);
-                    b.append(checkIt);
-                    $("#btnDiv").append(b);
-                });
-        
-        //getWeather();
+        var newButton = $("<div>");
+        var deferredButton = $.Deferred();
+        var coordinates = {
+            'lat': 0,
+            'lon': 0
+        };                   
+        deferredButton.done(
+            getPhoto(str,newButton),
+            getCoordinates(str,coordinates)
+        ).done(
+            getAirport(coordinates.lat,coordinates.lon,newButton),
+            getWeather(coordinates.lat,coordinates.lon,newButton)
+        ).done(function(){
+            $("#btnDiv").append(newButton);
+        });
     }
 }
 
-
-makeButtons();
+$(document).on("load",function(){
+    makeButtons();
+});
 
 $(document).on("click", "button.delete", function() {
     var buttonsList = JSON.parse(localStorage.getItem("buttons"));
