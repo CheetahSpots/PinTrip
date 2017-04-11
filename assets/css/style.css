@@ -7,9 +7,11 @@
 	background-color: transparent;
 	font-family: "Oregano", cursive;
 }
+
 .jumbotron h1 {
 	font-size: 140px;
 }
+
 #logo{
 	position: relative;
 	z-index: 500;
@@ -33,7 +35,8 @@
 	font-size:80px;
 	padding: 0;
 }
-#cityName, #stateName, #countryName {
+
+#cityName {
 	font-size:30px;
 }
 .cities {
@@ -64,13 +67,16 @@
     font-weight: 300;
     border-top: solid 1px #111163;
 }
+
 #searchBtn{
 	float: left;
 
 }
+
 #cityName{
 	float: left;
 }
+
 #searchbox{
 	padding-bottom: 5%;
 	z-index: 500;
@@ -91,4 +97,21 @@
 .planeDiv {
 	border:black 1px solid;
 	width: 500px;
+}
+
+#content-slider img {
+	-webkit-background-size: cover;
+  	-moz-background-size: cover;
+  	-o-background-size: cover;
+  	background-size: cover;
+}
+
+@media screen and (max-width:768px) {
+	
+
+}
+
+@media screen and (max-width:500px) {
+
+
 }
