@@ -7,9 +7,7 @@
 	background-color: transparent;
 	font-family: "Oregano", cursive;
 }
-img{
-	opacity: 0.7;
-}
+
 .jumbotron h1 {
 	font-size: 140px;
 }
@@ -25,7 +23,6 @@ img{
 }
 #content-slider{
 	margin-top: -18%;
-	background: #000;
 }
 .subText {
 	font-size: 40px;
@@ -33,6 +30,7 @@ img{
 .masthead {
 	width:100%;
 	text-align:center;
+
 	font-size:80px;
 
 	padding: 0;
@@ -40,8 +38,9 @@ img{
 	border: solid 1px #723c72;
 
 
-}
-#cityName, #stateName, #countryName {
+
+#cityName {
+
 	font-size:30px;
 }
 .cities {
@@ -51,13 +50,6 @@ img{
 	width:275px;
 	margin:5px;
 }
-
-#searchbar {
-	margin-top:12%;
-	margin-left:auto;
-	margin-right:auto;
-}
-
 
 .footer, .push {
     height: 44px;
@@ -72,13 +64,15 @@ img{
     font-weight: 300;
     border-top: solid 1px #111163;
 }
+
 #searchBtn{
 	float: left;
+}
 
+#cityName {
+	float:left;
 }
-#cityName{
-	float: left;
-}
+
 #searchbox{
 	padding-bottom: 5%;
 	z-index: 500;
