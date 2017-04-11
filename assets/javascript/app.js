@@ -84,6 +84,7 @@ $("#searchBtn").on("click", function(event){
 });
 
 $(function () {
+
     $('#contentslider').slidesjs({
     width: 1920,
     height: 520,
