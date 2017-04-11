@@ -83,32 +83,24 @@ $("#searchBtn").on("click", function(event){
 
 });
 
-
 $(function () {
-    var header = $(".masthead");
-    var backgrounds = [
-        "url(assets/images/atacama.png)",
-        "url(assets/images/BostonBackBay.png)",
-        "url(assets/images/bryce.png)",
-        "url(assets/images/cinque.png)",
-        "url(assets/images/fuji.png)",
-        "url(assets/images/hawaii.png)",
-        "url(assets/images/madagascar.png)",
-        "url(assets/images/sanfran.png)",
-        "url(assets/images/sydney1600x800.jpg)",
-        "url(assets/images/Vancouver1600x800.jpg)"];
-
-    var current = 0;
-
-    function nextBackground() {
-        header.css(
-            "background",
-            backgrounds[current = ++current % backgrounds.length]);
-
-        setTimeout(nextBackground, 3000);
+    $('#contentslider').slidesjs({
+    width: 1920,
+    height: 520,
+    effect: {
+        slide:{ speed: 800}
+    },
+    navigation: {
+        active: false
+    },
+    pagination: {
+        active: false
+    },
+    play:{
+        interval: 5000,
+        auto: true
     }
-    setTimeout(nextBackground, 3000);
-    header.css("background", backgrounds[0]);
+    });
 });
 
 

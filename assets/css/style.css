@@ -16,18 +16,9 @@
 	font-size: 40px;
 }
 
-.masthead {
-	width:1150px;
-	text-align:center;
-	color:white;
-	font-size:80px;
-	color: white;
-}
-
 #cityName, #stateName, #countryName {
 	font-size:30px;
 }
-
 .cities {
 	text-align:center;
 	border: 1px black solid;
