@@ -33,8 +33,9 @@
 	font-size:80px;
 	padding: 0;
 }
-#cityName, #stateName, #countryName {
+#cityName {
 	font-size:30px;
+	width: 250px;
 }
 .cities {
 	text-align:center;
@@ -45,8 +46,8 @@
 }
 
 #searchbar {
-	margin-top:12%;
-	margin-left:auto;
+	margin-top:7%;
+	margin-left: auto;
 	margin-right:auto;
 }
 
@@ -74,8 +75,8 @@
 #searchbox{
 	padding-bottom: 5%;
 	z-index: 500;
-	margin-top: -9%;
-	margin-left: 33%;
+	margin-top: -7%;
+	margin-left: 37%;
 }
 
 .weatherDiv {
