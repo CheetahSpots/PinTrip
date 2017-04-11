@@ -47,11 +47,11 @@ function makeButtons() {
         insideLocales = [];
     }
 
-
-
     for (var i = 0; i < locales.length; i++) { 
+
         var str = locales[i];
         var newButton = $("<div id='circlePin'>");
+        newButton.addClass("cities");
         var deferredButton = $.Deferred();
         var coordinates = {
             'lat': 0,
@@ -70,23 +70,23 @@ function makeButtons() {
     }
 }
 
-$(document).on("load",function(){
-    makeButtons();
-});
 
-$(document).on("click", "button.delete", function() {
-    var buttonsList = JSON.parse(localStorage.getItem("buttons"));
-    var currentIndex = $(this).attr("data-index");
 
-    buttonsList.splice(currentIndex, 1);
+makeButtons();
 
-    locales = buttonsList;
+// $(document).on("click", "button.delete", function() {
+//     var buttonsList = JSON.parse(localStorage.getItem("buttons"));
+//     var currentIndex = $(this).attr("data-index");
 
-    localStorage.setItem("buttons", JSON.stringify(locales));
+//     buttonsList.splice(currentIndex, 1);
 
-    makeButtons();
+//     locales = buttonsList;
 
-});
+//     localStorage.setItem("buttons", JSON.stringify(locales));
+
+//     makeButtons();
+
+// });
 
 $("#searchBtn").on("click", function(event){
     event.preventDefault();
@@ -119,7 +119,7 @@ $(function () {
         interval: 5000,
         auto: true
     }
-    });
+});
 });
 
 

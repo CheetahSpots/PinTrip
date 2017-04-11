@@ -9,9 +9,11 @@
 	padding-bottom: 0;
 	margin-bottom: 0;
 }
+
 .jumbotron h1 {
 	font-size: 140px;
 }
+
 #logo{
 	position: relative;
 	z-index: 500;
@@ -67,13 +69,16 @@
     font-weight: 300;
     border-top: solid 1px #111163;
 }
+
 #searchBtn{
 	float: left;
 
 }
+
 #cityName{
 	float: left;
 }
+
 #searchbox{
 	padding-bottom: 5%;
 	z-index: 500;
@@ -98,6 +103,7 @@
 	border:black 1px solid;
 	width: 500px;
 }
+
 #circlePin{
 	border-radius: 50%;
 	width: 200px;
@@ -116,6 +122,7 @@
 	margin-top: 119px;
 	margin-left: -15px;
 }
+
 @media screen and (max-width:768px) {
 	#content-slider{
 		margin-top: -18%;
@@ -139,9 +146,6 @@
 	#cityName{
 		width: 250px;
 	}
-
-}
-
 @media screen and (max-width:500px) {
 
 
