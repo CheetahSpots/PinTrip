@@ -87,16 +87,17 @@ $("#searchBtn").on("click", function(event){
 $(function () {
     var header = $(".masthead");
     var backgrounds = [
-        "url(assets/images/atacama.png)",
-        "url(assets/images/BostonBackBay.png)",
-        "url(assets/images/bryce.png)",
-        "url(assets/images/cinque.png)",
-        "url(assets/images/fuji.png)",
-        "url(assets/images/hawaii.png)",
-        "url(assets/images/madagascar.png)",
-        "url(assets/images/sanfran.png)",
-        "url(assets/images/sydney1600x800.jpg)",
-        "url(assets/images/Vancouver1600x800.jpg)"];
+        
+        "url(assets/images/boston.png)",
+        "url(assets/images/brycecanyon.png)",
+        "url(assets/images/cinqueterre.png)",
+        "url(assets/images/hawaiishore.png)",
+        "url(assets/images/istanbul.png)",
+        "url(assets/images/japan.png)",
+        "url(assets/images/london.png)",
+        "url(assets/images/marien.png)",
+        "url(assets/images/ocracoke.png)",
+        "url(assets/images/rome.png)"];
 
     var current = 0;
 
