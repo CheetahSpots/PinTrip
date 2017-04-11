@@ -129,9 +129,8 @@ function getAirportCode(lon, lat, range){
 			return false;
 		}
 }
-
-// $(".search").on("click",function(event){
-// 	event.preventDefault();
-// 	var city = $("#cityName").val().trim();
-// 	getAirport(city);
-// });
+/*$(".search").on("click",function(event){
+ 	event.preventDefault();
+	var city = $("#cityName").val().trim();
+ 	getAirport(city);
+});*/

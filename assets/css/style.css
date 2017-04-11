@@ -92,3 +92,33 @@
 	border:black 1px solid;
 	width: 500px;
 }
+@media screen and (max-width:768px) {
+	#content-slider{
+		margin-top: -18%;
+	}
+	#searchbox{
+		margin-top: -14%;
+		margin-left: 2%;
+	}
+	#sub{
+		font-size: 20px;
+	}
+	p{
+		margin-top: -4%;
+	}
+	#logo{
+		font-size: 80px;
+	}
+	form{
+		display: inline-flex;
+	}
+	#cityName{
+		width: 250px;
+	}
+
+}
+
+@media screen and (max-width:500px) {
+
+
+}
