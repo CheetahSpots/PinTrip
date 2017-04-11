@@ -5,6 +5,37 @@ if (!Array.isArray(locales)) {
     locales = [];
 }
 
+function getPhoto(str,b){
+    var api = 'AIzaSyBvIQ8yyx93va9LZdlfgdOnI7Ce9_gYbvM';
+    var getID = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=" + str +"&key=" + api;
+    var q = encodeURIComponent('select * from html where url="'+getID+'"');
+    var yql = 'https://query.yahooapis.com/v1/public/yql?q='+q+'&format=json';
+    $.ajax({
+            url: yql,
+            contentType: 'text/plain',
+            method: "GET"
+        }).done(function(ID) {
+            console.log(ID);
+            var obj = JSON.parse(ID.query.results.body);
+            var photoRef = obj.results[0].photos[0].photo_reference;
+            var photo = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference="+photoRef+"&key="+api;
+            console.log(photo);
+            b.addClass("col-md-4");
+            b.addClass("cities");
+            var image = $('<img>');
+            image.addClass("photos");
+            image.attr('src', photo);
+            b.append(image);
+            var checkIt = $("<h2>");
+            var link = $("<a>");
+            link.addClass("btn btn-default");
+            link.text(str);
+            checkIt.append(link);
+            b.append(checkIt);
+        });
+}
+
+
 function makeButtons() {
    
    $("#btnDiv").empty();
@@ -15,46 +46,31 @@ function makeButtons() {
         insideLocales = [];
     }
 
+
+
     for (var i = 0; i < locales.length; i++) { 
         var str = locales[i];
-        var api = 'AIzaSyBvIQ8yyx93va9LZdlfgdOnI7Ce9_gYbvM';
-        var getID = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=" + str +"&key=" + api;
-        var q = encodeURIComponent('select * from html where url="'+getID+'"');
-        var yql = 'https://query.yahooapis.com/v1/public/yql?q='+q+'&format=json';
-       
-        //console.log(getID);
-
-            $.ajax({
-                    url: yql,
-                    contentType: 'text/plain',
-                    method: "GET"
-                }).done(function(ID) {
-                    var obj = JSON.parse(ID.query.results.body);
-                    var photoRef = obj.results[0].photos[0].photo_reference;
-                    var photo = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference="+photoRef+"&key="+api;
-                    console.log(photo);
-                    var b = $("<div>");
-                    b.addClass("col-md-4");
-                    b.addClass("cities");
-                    var image = $('<img>');
-                    image.addClass("photos");
-                    image.attr('src', photo);
-                    b.append(image);
-                    var checkIt = $("<h2>");
-                    var link = $("<a>");
-                    link.addClass("btn btn-default");
-                    link.text(str);
-                    checkIt.append(link);
-                    b.append(checkIt);
-                    $("#btnDiv").append(b);
-                });
-        
-        //getWeather();
+        var newButton = $("<div>");
+        var deferredButton = $.Deferred();
+        var coordinates = {
+            'lat': 0,
+            'lon': 0
+        };                   
+        deferredButton.done(
+            getPhoto(str,newButton),
+            getCoordinates(str,coordinates)
+        ).done(
+            getAirport(coordinates.lat,coordinates.lon,newButton),
+            getWeather(coordinates.lat,coordinates.lon,newButton)
+        ).done(function(){
+            $("#btnDiv").append(newButton);
+        });
     }
 }
 
-
-makeButtons();
+$(document).on("load",function(){
+    makeButtons();
+});
 
 $(document).on("click", "button.delete", function() {
     var buttonsList = JSON.parse(localStorage.getItem("buttons"));
@@ -83,33 +99,25 @@ $("#searchBtn").on("click", function(event){
 
 });
 
-
 $(function () {
-    var header = $(".masthead");
-    var backgrounds = [
-        
-        "url(assets/images/boston.png)",
-        "url(assets/images/brycecanyon.png)",
-        "url(assets/images/cinqueterre.png)",
-        "url(assets/images/hawaiishore.png)",
-        "url(assets/images/istanbul.png)",
-        "url(assets/images/japan.png)",
-        "url(assets/images/london.png)",
-        "url(assets/images/marien.png)",
-        "url(assets/images/ocracoke.png)",
-        "url(assets/images/rome.png)"];
 
-    var current = 0;
-
-    function nextBackground() {
-        header.css(
-            "background",
-            backgrounds[current = ++current % backgrounds.length]);
-
-        setTimeout(nextBackground, 3000);
+    $('#content-slider').slidesjs({
+    width: 1920,
+    height: 500,
+    effect: {
+        slide:{ speed: 800}
+    },
+    navigation: {
+        active: false
+    },
+    pagination: {
+        active: false
+    },
+    play:{
+        interval: 5000,
+        auto: true
     }
-    setTimeout(nextBackground, 3000);
-    header.css("background", backgrounds[0]);
+    });
 });
 
 
