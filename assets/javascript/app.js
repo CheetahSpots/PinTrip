@@ -1,12 +1,12 @@
 var locales = JSON.parse(localStorage.getItem("buttons"));
-var searchBox = new google.maps.places.SearchBox(document.getElementById('cityName'));
+var searchBox = new google.maps.places.Autocomplete(document.getElementById('cityName'));
 
 if (!Array.isArray(locales)) {
     locales = [];
 }
 
 function getPhoto(str,b){
-    var api = 'AIzaSyBvIQ8yyx93va9LZdlfgdOnI7Ce9_gYbvM';
+    var api = 'AIzaSyCXTtBaHKkdoistY7XeHDwYVQ3-JURBRk8';
     var getID = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=" + str +"&key=" + api;
     var q = encodeURIComponent('select * from html where url="'+getID+'"');
     var yql = 'https://query.yahooapis.com/v1/public/yql?q='+q+'&format=json';
@@ -18,20 +18,21 @@ function getPhoto(str,b){
             console.log(ID);
             var obj = JSON.parse(ID.query.results.body);
             var photoRef = obj.results[0].photos[0].photo_reference;
-            var photo = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference="+photoRef+"&key="+api;
+            var photo = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=800&photoreference="+photoRef+"&key="+api;
+            var checkIt = $("<div id='textbar' class='col-md-12'>");
             console.log(photo);
             b.addClass("col-md-4");
             b.addClass("cities");
+            checkIt.html(str.replace(/\+/g, ' '));
+            b.append(checkIt);
+            var fader = $('<div id="fader">').css('background-color', 'rgba(0, 0, 0, 0.45)');
+            b.append(fader);
             var image = $('<img>');
             image.addClass("photos");
             image.attr('src', photo);
-            b.append(image);
-            var checkIt = $("<h2>");
-            var link = $("<a>");
-            link.addClass("btn btn-default");
-            link.text(str);
-            checkIt.append(link);
-            b.append(checkIt);
+            checkIt.append(image);
+
+            console.log(b);
         });
 }
 
@@ -49,7 +50,7 @@ function makeButtons() {
     for (var i = 0; i < locales.length; i++) { 
 
         var str = locales[i];
-        var newButton = $("<div>");
+        var newButton = $("<div id='circlePin'>");
         newButton.addClass("cities");
         var deferredButton = $.Deferred();
         var coordinates = {
@@ -58,12 +59,13 @@ function makeButtons() {
         };                   
         deferredButton.done(
             getPhoto(str,newButton),
-            getCoordinates(str,coordinates)
+            $("#btnDiv").append(newButton)
+            /*getCoordinates(str,coordinates)*/
         ).done(
-            getAirport(coordinates.lat,coordinates.lon,newButton),
-            getWeather(coordinates.lat,coordinates.lon,newButton)
+            /*getAirport(coordinates.lat,coordinates.lon,newButton)*/
+            /*getWeather(coordinates.lat,coordinates.lon,newButton)*/
         ).done(function(){
-            $("#btnDiv").append(newButton);
+            
         });
     }
 }

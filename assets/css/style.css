@@ -6,6 +6,8 @@
 	text-align:center;
 	background-color: transparent;
 	font-family: "Oregano", cursive;
+	padding-bottom: 0;
+	margin-bottom: 0;
 }
 
 .jumbotron h1 {
@@ -89,20 +91,36 @@
 }
 
 .photos {
-	width:100%;
-	height:50%;
-	margin-top:10px;
+	width:265px;
+	height: 200px;
+	margin-top:-161px;
+	margin-left: -62px;
+	z-index: -500;
+	position: relative;
 }
 
 .planeDiv {
 	border:black 1px solid;
 	width: 500px;
 }
-#content-slider img {
-	-webkit-background-size: cover;
-  	-moz-background-size: cover;
-  	-o-background-size: cover;
-  background-size: cover;
+
+#circlePin{
+	border-radius: 50%;
+	width: 200px;
+	height: 200px;
+	overflow: hidden;
+}
+#textbar{
+	margin-top: 121px;
+	font-weight: bold;
+	color: white;
+}
+#fader{
+	background: black;
+	height: 42px;
+	width: 200px;
+	margin-top: 119px;
+	margin-left: -15px;
 }
 
 @media screen and (max-width:768px) {
