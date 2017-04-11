@@ -17,12 +17,14 @@
 }
 
 .masthead {
-	width:1150px;
+	width:100%;
+	height:500px;
 	text-align:center;
 	color:white;
 	font-size:80px;
 	color: white;
 }
+
 
 #cityName, #stateName, #countryName {
 	font-size:30px;
