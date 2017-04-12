@@ -1,13 +1,13 @@
-var weatherAPIKey = "aedfac0b150f3c79";
+/*var weatherAPIKey = "aedfac0b150f3c79";
 var qpxAPIKey = "AIzaSyBCZ_Nx9Hdm4n-VOeVZvfltwPy76PXCp-8";
 var placesAPIKey = "AIzaSyAGAmaVfOaIUJD8InL1xVYy1hSahuGED-U";
 var airportcodes = getAirportList();
 var oLat;
 var oLon;
-var currentLocation = navigator.geolocation.getCurrentPosition(getPosition);
+var currentLocation = navigator.geolocation.getCurrentPosition(getPosition);*/
 
 
-function getWeather(lat, lon, button) {
+/*function getWeather(lat, lon, button) {
 	var queryURL = "https://api.wunderground.com/api/"+weatherAPIKey+"/forecast/q/"+lat+","+lon+".json"
 		$.ajax({
 			url: queryURL,
@@ -17,11 +17,11 @@ function getWeather(lat, lon, button) {
 			var weatherImage = $("<img src="+currentDay.icon_url+">");			
 			var lowTemp = currentDay.low.fahrenheit;
 			var highTemp = currentDay.high.fahrenheit;
-			$(button).append(weatherImage);
-			$(button).append("<h2>Low: "+lowTemp+"\xB0F</h2>");
-			$(button).append("<h2>High: "+highTemp+"\xB0F</h2>");
+			button.append(weatherImage);
+			button.append("<h2>Low: "+lowTemp+"\xB0F</h2>");
+			button.append("<h2>High: "+highTemp+"\xB0F</h2>");
 		});
-}
+}*/
 //Only getting current date for now, should probably let users choose date or use a date range
 /*function getCurrentDate(){
 	var currentDate = new Date();
@@ -70,12 +70,12 @@ function getWeather(lat, lon, button) {
 		});
 }*/
 
-//This gets coordinates of user to find closest airport later
-function getPosition(position){
+
+/*function getPosition(position){
 	oLat = position.coords.latitude;
 	oLon = position.coords.longitude;
 	console.log(oLat+":"+oLon);
-}
+}*/
 
 
 /*function getAirport(dLat, dLon, b) {
@@ -84,7 +84,7 @@ function getPosition(position){
 	getAirlinePricing(origin,destination,b);
 }*/
 
-function getCoordinates(city){
+/*function getCoordinates(city,obj){
 	var queryURL = "https://maps.googleapis.com/maps/api/place/textsearch/json?";
 		queryURL += $.param({
 			'query': city,
@@ -104,19 +104,13 @@ function getCoordinates(city){
 			},
 		success: function(response){
 			var data = response.query.results.json.results[0];
-			var obj = {
-				'lat': 0,
-				'lon': 0
-			}
 			obj.lat = data.geometry.location.lat;
 			obj.lon = data.geometry.location.lng;
-			return obj;
 			}
 		});
-}
+}*/
 
-//grabs Airport Codes from lat/lon data for flight search
-function getAirportCode(lon, lat, range){
+/*function getAirportCode(lon, lat, range){
 		if(range < 3){
 			for (var i = 0; i < airportcodes.length; i++){
 				var current = airportcodes[i];
@@ -134,4 +128,9 @@ function getAirportCode(lon, lat, range){
 		else{
 			return false;
 		}
-}
+}*/
+/*$(".search").on("click",function(event){
+ 	event.preventDefault();
+	var city = $("#cityName").val().trim();
+ 	getAirport(city);
+});*/
