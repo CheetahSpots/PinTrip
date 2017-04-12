@@ -54,6 +54,7 @@ form {
 	font-size:30px;
 	/*width: 400px;*/
 }
+
 .cities {
 	text-align:center;
 	border: 1px black solid;
@@ -71,7 +72,7 @@ form {
 #randomBtn {
 	font-size: 25px;
 	/*border-radius: 7px;*/
-	/*background-color: white;*/
+	background-color: white;
 	/*padding: 12px 12px;*/
 	/* margin-left: -53px; */
 	color: black;
@@ -158,8 +159,39 @@ form {
 		display: inline-flex;
 	}
 	#cityName{
+		width:300px;
+		margin-top:-60%;
+		margin-left:70%;
 	}
+
+	#searchBtn {
+		margin-left:110%;
+	}
+
+	#randomBtn {
+		margin-top:-20%;
+	}
+
 @media screen and (max-width:500px) {
+	#cityName {
+		width:200px;
+		margin-left:110%;
+	}
 
+	#content-slider {
+		margin-top:-25%;
+	}
 
+<<<<<<< HEAD
 }*/
+=======
+	#randomBtn {
+		margin-left:50%;
+	}
+
+	.footer {
+		height:30px;
+		padding-top:10px;
+	}
+}
+>>>>>>> a54246df52fd04aaaeeebf529bae2acb377bca41

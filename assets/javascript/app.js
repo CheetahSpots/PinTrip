@@ -1,6 +1,13 @@
 var locales = JSON.parse(localStorage.getItem("buttons"));
 var searchBox = new google.maps.places.Autocomplete(document.getElementById('cityName'));
 var cities = [
+    'Dubrovnic',
+    'Istanbul',
+    'Cancun',
+    'Mumbai',
+    'Hong Kong',
+    'Liberia',
+    'Havana',
     'London',
     'New York',
     'Paris',
@@ -34,16 +41,17 @@ function getPhoto(str,b){
             var photo = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=800&photoreference="+photoRef+"&key="+api;
             var checkIt = $("<div id='textbar' class='col-md-12'>");
             console.log(photo);
-            $(b).addClass("col-md-4");
-            $(b).addClass("cities");
+            b.addClass("col-md-4");
+            b.addClass("cities");
             checkIt.html(str.replace(/\+/g, ' '));
-            $(b).append(checkIt);
+            b.append(checkIt);
             var fader = $('<div id="fader">').css('background-color', 'rgba(0, 0, 0, 0.45)');
-            $(b).append(fader);
+            b.append(fader);
             var image = $('<img>');
             image.addClass("photos");
             image.attr('src', photo);
             checkIt.append(image);
+            console.log(b);
         });
 }
 
@@ -65,21 +73,18 @@ function makeButtons() {
         newButton.addClass("cities");
         var deferredButton = $.Deferred();
         var coordinates = {
-            'lat': 37.8,
-            'lon': -122.4 //Test values while maps is broken
-        };
-        deferredButton.resolve();
-        deferredButton.done( //do what we can with just the text search
-            // getPhoto(str,newButton),
-            // function(){ 
-                // var gotCoordinates = getCoordinates(str);
-                // coordinates.lat = gotCoordinates.lat;
-                // coordinates.lon = gotCoordinates.lon;
-        // }).done( //after getting coordinates back, get airport and weather info
-            /*getAirport(coordinates.lat,coordinates.lon,newButton),*/
-            getWeather(coordinates.lat,coordinates.lon,newButton)
+            'lat': 0,
+            'lon': 0
+        };                   
+        deferredButton.done(
+            getPhoto(str,newButton),
+            $("#btnDiv").hide().append(newButton).fadeIn(1000)
+            /*getCoordinates(str,coordinates)*/
+        ).done(
+            /*getAirport(coordinates.lat,coordinates.lon,newButton)*/
+            /*getWeather(coordinates.lat,coordinates.lon,newButton)*/
         ).done(function(){
-            $("btnDiv").append(newButton);
+            
         });
     }
 }
@@ -122,8 +127,6 @@ $("#randomBtn").on("click",function() {
     // $("#searchBtn").trigger("click");
     return false;
 });
-
-
 
 $(function () {
 
