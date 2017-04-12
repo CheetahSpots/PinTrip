@@ -43,7 +43,6 @@ function getPhoto(str,b){
             image.addClass("photos");
             image.attr('src', photo);
             checkIt.append(image);
-
             console.log(b);
         });
 }
@@ -71,7 +70,7 @@ function makeButtons() {
         };                   
         deferredButton.done(
             getPhoto(str,newButton),
-            $("#btnDiv").append(newButton)
+            $("#btnDiv").hide().append(newButton).fadeIn(1000)
             /*getCoordinates(str,coordinates)*/
         ).done(
             /*getAirport(coordinates.lat,coordinates.lon,newButton)*/
