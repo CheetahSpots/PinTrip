@@ -3,7 +3,7 @@
 }
 
 body {
-	/*background-image: url("../images/bgTexture/45degreee_fabric2.png");*/
+	background-image: url("../images/bgTexture/45degreee_fabric2.png");
 }
 
 .jumbotron {
@@ -70,7 +70,7 @@ form {
 }
 
 #randomBtn {
-	font-size: 25px;
+	font-size: 22px;
 	/*border-radius: 7px;*/
 	background-color: white;
 	/*padding: 12px 12px;*/
@@ -110,13 +110,15 @@ form {
 
 .weatherDiv {
 	border:black 1px solid;
-	border-radius: 50%;
+	border-radius: 32%;
 	width: 200px;
 	height: 200px;
 	overflow: hidden;
 	text-align:center;
 	font-family:"Oregano", Times;
-	margin-left:40%;
+	margin-left: 19%;
+	background-color: white;
+	box-shadow: 2px -1px 9px #888888;
 }
 
 .photos {
@@ -133,6 +135,7 @@ form {
 	width: 200px;
 	height: 200px;
 	overflow: hidden;
+	box-shadow: 6px -1px 9px #888888;
 }
 #textbar{
 	margin-top: 121px;
