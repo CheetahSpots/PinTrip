@@ -77,7 +77,6 @@ function getWeather(lat, long, div) {
 }
 
 var airportcodes = getAirportList();
-var placesAPIKey = "AIzaSyAGAmaVfOaIUJD8InL1xVYy1hSahuGED-U";
 var oLat;
 var oLon;
 var currentLocation = navigator.geolocation.getCurrentPosition(getPosition);
@@ -104,6 +103,7 @@ $.ajax({
         'jsonCompat': 'new',
     },
     success: function(response){
+        console.log(response);
         var data = response.query.results.json.results[0];
         var dLat = data.geometry.location.lat;
         var dLon = data.geometry.location.lng;
@@ -135,7 +135,7 @@ function getAirportCode(lon, lat, range){
         }
 }
 var qpxAPIKey = "AIzaSyBCZ_Nx9Hdm4n-VOeVZvfltwPy76PXCp-8";
-var placesAPIKey = "AIzaSyAGAmaVfOaIUJD8InL1xVYy1hSahuGED-U";
+var placesAPIKey = "AIzaSyDQoY_8yJb2FdgZMn5xxnehR-_1qCtK-tE";
 
 //Only getting current date for now, should probably let users choose date or use a date range
 function getCurrentDate(){
