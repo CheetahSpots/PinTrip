@@ -11,14 +11,14 @@ PinTrip is a website where you pin travel destinations, but in addition to beaut
 
 ## Technologies used
 You can give a brief listing of the technologies you've learned and applied here
-- animation plugins
--jQuery
--Bootstrap
--GoogleMaps API
--GoogleMaps Javascript Library
--Weather Underground API
--Google qpxExpress API (Airline pricing)
--Google Fonts
+* animation plugins
+* jQuery
+* Bootstrap
+* GoogleMaps API
+* GoogleMaps Javascript Library
+* Weather Underground API
+* Google qpxExpress API (Airline pricing)
+* Google Fonts
 
 ## Getting Started
 
@@ -69,7 +69,7 @@ function getCoordinates(city,obj){
 
 * **Seton Raynor** - Front End & UX, Styling and Design
 * **Paul Siewers** - Backend Airline Ticket & Weather API & Back to Front End Implementor
-* **Cynthia Richards** - Front End & UX, Layout & PLanning
+* **Cynthia Richards** - Front End & UX, Layout & Planning
 * **Byron Anderson** - Backend Google Maps API, javascripting animations & Back to Front End Implementor
 
 See also the list of [contributors](https://github.com/CheetahSpots/PinTrip/graphs/contributors) who participated in this project.
