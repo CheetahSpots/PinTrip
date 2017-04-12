@@ -2,12 +2,18 @@
 	box-sizing:border-box;
 }
 
+body {
+	background-image: url("../images/bgTexture/45degreee_fabric.png");
+}
+
 .jumbotron {
 	text-align:center;
 	background-color: transparent;
 	font-family: "Oregano", cursive;
 	padding-bottom: 0;
 	margin-bottom: 0;
+	/*padding-top: 0;*/
+	/* z-index: 1; */
 }
 
 .jumbotron h1 {
@@ -18,16 +24,20 @@
 	position: relative;
 	z-index: 500;
 	color:white;
+	top: 29px;
 }
 #sub{
 	position: relative;
 	z-index: 500;
 	color:white;
+	top: 15px;
 }
 #content-slider{
 	margin-top: -18%;
 	background: #000;
+    border: solid 1px rgba(105, 45, 105, 0.64);
 }
+
 .subText {
 	font-size: 40px;
 }
@@ -35,7 +45,6 @@
 	width:100%;
 	text-align:center;
 	font-size:80px;
-	padding: 0;
 }
 #cityName {
 	font-size:30px;
@@ -126,6 +135,7 @@
 @media screen and (max-width:768px) {
 	#content-slider{
 		margin-top: -18%;
+		top: 30;
 	}
 	#searchbox{
 		margin-top: -14%;
