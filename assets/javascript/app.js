@@ -176,6 +176,7 @@ function getAirlinePricing(startCode, endCode, div){
     }).done(function(response){
         console.log(response);
         var newDiv = $("<div>");
+        newDiv.addClass("planeDiv");
         if(response.trips.tripOption){
              newDiv.html(response.trips.tripOption[0].saleTotal);
         }
@@ -202,6 +203,7 @@ function makeButtons() {
         var newButton = $("<div id='circlePin'>");
         newButton.addClass("cities");                  
         var weatherButton = $("<div>");
+        weatherButton.addClass("weatherDiv");
         getPhoto(str,newButton);
         getAirport(str,weatherButton);
         var newRow = $("<div class='row'>");
@@ -210,7 +212,7 @@ function makeButtons() {
         $("#btnDiv").append(newRow);
     }
 }
-localStorage.clear();
+//localStorage.clear();
 makeButtons();
 
 // $(document).on("click", "button.delete", function() {
