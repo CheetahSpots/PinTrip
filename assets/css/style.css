@@ -101,8 +101,26 @@ button#randomBtn {
 	z-index: 500;
 }
 
+.planeDiv {
+	border:black 1px solid;
+	border-radius: 50%;
+	width: 200px;
+	height: 200px;
+	overflow: hidden;
+	text-align:center;
+	font-family:"Oregano", Times;
+	margin-left:80%;
+}
+
 .weatherDiv {
-	clear:both;
+	border:black 1px solid;
+	border-radius: 50%;
+	width: 200px;
+	height: 200px;
+	overflow: hidden;
+	text-align:center;
+	font-family:"Oregano", Times;
+	margin-left:40%;
 }
 
 .photos {
@@ -112,11 +130,6 @@ button#randomBtn {
 	margin-left: -62px;
 	z-index: -500;
 	position: relative;
-}
-
-.planeDiv {
-	border:black 1px solid;
-	width: 500px;
 }
 
 #circlePin{
