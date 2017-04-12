@@ -48,11 +48,148 @@ function getPhoto(str,b){
         });
 }
 
+var weatherAPIKey = "aedfac0b150f3c79";
+
+
+function getWeather(lat, long, div) {
+    var queryURL = "http://api.wunderground.com/api/"+weatherAPIKey+"/forecast/q/"+lat+","+long+".json"
+    $.ajax({
+        url: queryURL,
+        method: "GET"
+    }).done(function(response){  
+        var currentDay = response.forecast.simpleforecast.forecastday[0];
+        var weatherImage = $("<img src="+currentDay.icon_url+">");          
+        var lowTemp = currentDay.low.fahrenheit;
+        var highTemp = currentDay.high.fahrenheit;
+        var newDiv = $("<div>");
+        newDiv.append(weatherImage);
+        newDiv.append("<h2>Low: "+lowTemp+"\xB0F</h2>");
+        newDiv.append("<h2>High: "+highTemp+"\xB0F</h2>");
+        $(div).prepend(newDiv);
+    });
+}
+
+var airportcodes = getAirportList();
+var placesAPIKey = "AIzaSyAGAmaVfOaIUJD8InL1xVYy1hSahuGED-U";
+var oLat;
+var oLon;
+var currentLocation = navigator.geolocation.getCurrentPosition(getPosition);
+function getPosition(position){
+    oLat = position.coords.latitude;
+    oLon = position.coords.longitude;
+}
+function getAirport(city, div) {
+var queryURL = "https://maps.googleapis.com/maps/api/place/textsearch/json?";
+queryURL += $.param({
+    'query': city,
+    'type': "airport",
+    'key': placesAPIKey,
+});
+var yqlURL = "https://query.yahooapis.com/v1/public/yql";
+$.ajax({
+    url: yqlURL,
+    type: "GET",
+    dataType: "jsonp",
+    cache: false,
+    data: {
+        'q': 'SELECT * FROM json WHERE url="'+queryURL+'"',
+        'format': 'json',
+        'jsonCompat': 'new',
+    },
+    success: function(response){
+        var data = response.query.results.json.results[0];
+        var dLat = data.geometry.location.lat;
+        var dLon = data.geometry.location.lng;
+        var destination = getAirportCode(dLon, dLat, 0.1);
+        currentLocation = navigator.geolocation.getCurrentPosition(getPosition);
+        var origin = getAirportCode(oLon,oLat,0.1);
+        getAirlinePricing(origin,destination,div);
+        getWeather(dLat,dLon,div);
+    },          
+});
+}
+function getAirportCode(lon, lat, range){
+        if(range < 3){
+            for (var i = 0; i < airportcodes.length; i++){
+                var current = airportcodes[i];
+                if (current.type==="airport"){
+                    var cLat = parseInt(current.lat);
+                    var cLon = parseInt(current.lon);
+                    if (lon - range < cLon && lon + range > cLon && lat - range < cLat && lat + range > cLat) {
+                        console.log(current.iata);
+                        return current.iata;
+                    }
+                }
+            }
+            return getAirportCode(lon,lat,range*2);
+        }
+        else{
+            return false;
+        }
+}
+var qpxAPIKey = "AIzaSyBCZ_Nx9Hdm4n-VOeVZvfltwPy76PXCp-8";
+var placesAPIKey = "AIzaSyAGAmaVfOaIUJD8InL1xVYy1hSahuGED-U";
+
+//Only getting current date for now, should probably let users choose date or use a date range
+function getCurrentDate(){
+    var currentDate = new Date();
+    var year = currentDate.getFullYear();
+    var month = currentDate.getMonth()+1;
+    if (month < 10){
+        month = "0"+month;
+    }
+    var day = currentDate.getDate();
+    if (day < 10){
+        day = "0"+day;
+    }
+    return year+"-"+month+"-"+day;
+}
+
+function getAirlinePricing(startCode, endCode, div){
+    var currentDate = getCurrentDate();
+    var flight = {
+      "request": {
+        "slice": [
+          {
+            "origin": startCode,
+            "destination": endCode,
+            "date": currentDate
+          }
+        ],
+        "passengers": {
+          "adultCount": 1,
+          "infantInLapCount": 0,
+          "infantInSeatCount": 0,
+          "childCount": 0,
+          "seniorCount": 0
+        },
+        "solutions": 1,         //limit results to 1 for testing
+        "refundable": false
+      }
+    };
+    $.ajax({
+        url: "https://www.googleapis.com/qpxExpress/v1/trips/search?key="+qpxAPIKey,
+        method: "POST",
+        contentType: "application/json", 
+        dataType: "json",
+        data: JSON.stringify(flight)
+    }).done(function(response){
+        console.log(response);
+        var newDiv = $("<div>");
+        if(response.trips.tripOption){
+             newDiv.html(response.trips.tripOption[0].saleTotal);
+        }
+        else{
+            newDiv.html("No Direct Flights Found");
+        }
+        $(div).append(newDiv);
+    });
+}
+
 
 function makeButtons() {
    
    $("#btnDiv").empty();
-
     var insideLocales = JSON.parse(localStorage.getItem("buttons"));
 
     if (!Array.isArray(insideLocales)) {
@@ -63,27 +200,17 @@ function makeButtons() {
 
         var str = locales[i];
         var newButton = $("<div id='circlePin'>");
-        newButton.addClass("cities");
-        var deferredButton = $.Deferred();
-        var coordinates = {
-            'lat': 0,
-            'lon': 0
-        };                   
-        deferredButton.done(
-            getPhoto(str,newButton),
-            $("#btnDiv").hide().append(newButton).fadeIn(1000)
-            /*getCoordinates(str,coordinates)*/
-        ).done(
-            /*getAirport(coordinates.lat,coordinates.lon,newButton)*/
-            /*getWeather(coordinates.lat,coordinates.lon,newButton)*/
-        ).done(function(){
-            
-        });
+        newButton.addClass("cities");                  
+        var weatherButton = $("<div>");
+        getPhoto(str,newButton);
+        getAirport(str,weatherButton);
+        var newRow = $("<div class='row'>");
+        newRow.append(newButton);
+        newRow.append(weatherButton);
+        $("#btnDiv").append(newRow);
     }
 }
-
-
-
+localStorage.clear();
 makeButtons();
 
 // $(document).on("click", "button.delete", function() {
