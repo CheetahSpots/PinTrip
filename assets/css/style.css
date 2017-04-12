@@ -118,6 +118,7 @@ form {
 	font-family:"Oregano", Times;
 	margin-left: 19%;
 	background-color: white;
+	box-shadow: 2px -1px 9px #888888;
 }
 
 .photos {
@@ -134,6 +135,7 @@ form {
 	width: 200px;
 	height: 200px;
 	overflow: hidden;
+	box-shadow: 6px -1px 9px #888888;
 }
 #textbar{
 	margin-top: 121px;
@@ -196,9 +198,7 @@ form {
 		margin-top:-25%;
 	}
 
-<<<<<<< HEAD
-}*/
-=======
+
 	#randomBtn {
 		margin-left:50%;
 	}
@@ -208,4 +208,3 @@ form {
 		padding-top:10px;
 	}
 }
->>>>>>> a54246df52fd04aaaeeebf529bae2acb377bca41
