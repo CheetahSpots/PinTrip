@@ -13,6 +13,7 @@ var cities = [
     'Cairo',
     'Moscow'
 ];
+
 if (!Array.isArray(locales)) {
     locales = [];
 }

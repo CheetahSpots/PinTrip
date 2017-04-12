@@ -53,6 +53,7 @@ form {
 	font-size:30px;
 	width: 400px;
 }
+
 .cities {
 	text-align:center;
 	border: 1px black solid;
@@ -159,8 +160,35 @@ button#randomBtn {
 		display: inline-flex;
 	}
 	#cityName{
+		width:300px;
+		margin-top:-60%;
+		margin-left:70%;
 	}
+
+	#searchBtn {
+		margin-left:110%;
+	}
+
+	#randomBtn {
+		margin-top:-20%;
+	}
+
 @media screen and (max-width:500px) {
+	#cityName {
+		width:200px;
+		margin-left:110%;
+	}
 
+	#content-slider {
+		margin-top:-25%;
+	}
 
+	#randomBtn {
+		margin-left:50%;
+	}
+
+	.footer {
+		height:30px;
+		padding-top:10px;
+	}
 }
