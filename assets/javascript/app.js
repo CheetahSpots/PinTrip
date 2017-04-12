@@ -1,6 +1,13 @@
 var locales = JSON.parse(localStorage.getItem("buttons"));
 var searchBox = new google.maps.places.Autocomplete(document.getElementById('cityName'));
 var cities = [
+    'Dubrovnic',
+    'Istanbul',
+    'Cancun',
+    'Mumbai',
+    'Hong Kong',
+    'Liberia',
+    'Havana',
     'London',
     'New York',
     'Paris',
@@ -242,11 +249,19 @@ $("#searchBtn").on("click", function(event){
 
 });
 
+$("#randomBtn").on("click",function() {
+    var i = Math.floor(Math.random() * (cities.length - 1));
+    $("#cityName").val(cities[i]);
+    $("#cityName").focus();
+    // $("#searchBtn").trigger("click");
+    return false;
+});
+
 $(function () {
 
     $('#content-slider').slidesjs({
     width: 1920,
-    height: 480,
+    height: 600,
     effect: {
         slide:{ speed: 800}
     },
