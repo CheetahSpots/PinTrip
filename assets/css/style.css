@@ -3,7 +3,7 @@
 }
 
 body {
-	background-image: url("../images/bgTexture/45degreee_fabric.png");
+	background-image: url("../images/bgTexture/45degreee_fabric2.png");
 }
 
 .jumbotron {
@@ -30,6 +30,11 @@ body {
 	color:white;
 	top: 15px;
 }
+
+form {
+	line-height: .5;
+}
+
 #content-slider{
 	margin-top: -18%;
 	background: #000;
@@ -46,7 +51,7 @@ body {
 }
 #cityName {
 	font-size:30px;
-	width: 250px;
+	width: 400px;
 }
 .cities {
 	text-align:center;
@@ -60,6 +65,14 @@ body {
 	margin-top:7%;
 	margin-left: auto;
 	margin-right:auto;
+}
+
+button#randomBtn {
+	font-size: 25px;
+	border-radius: 7px;
+	background-color: white;
+	padding: 12px 12px;
+	/* margin-left: -53px; */
 }
 
 
@@ -78,19 +91,13 @@ body {
 }
 
 #searchBtn{
-	float: left;
-
 }
 
-#cityName{
-	float: left;
-}
-
-#searchbox{
+#searchbox {
+	position: absolute;
+	top: 288px;
 	padding-bottom: 5%;
 	z-index: 500;
-	margin-top: -7%;
-	margin-left: 37%;
 }
 
 .weatherDiv {
@@ -152,7 +159,6 @@ body {
 		display: inline-flex;
 	}
 	#cityName{
-		width: 250px;
 	}
 @media screen and (max-width:500px) {
 

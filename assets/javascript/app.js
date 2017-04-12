@@ -1,5 +1,18 @@
 var locales = JSON.parse(localStorage.getItem("buttons"));
 var searchBox = new google.maps.places.Autocomplete(document.getElementById('cityName'));
+var cities = [
+    'London',
+    'New York',
+    'Paris',
+    'Munich',
+    'Sydney',
+    'Buenos Aires',
+    'Los Angeles',
+    'Caracas',
+    'Lisbon',
+    'Cairo',
+    'Moscow'
+];
 
 if (!Array.isArray(locales)) {
     locales = [];
@@ -101,6 +114,16 @@ $("#searchBtn").on("click", function(event){
     makeButtons();
 
 });
+
+$("#randomBtn").on("click",function() {
+    var i = Math.floor(Math.random() * (cities.length - 1));
+    $("#cityName").val(cities[i]);
+    $("#cityName").focus();
+    // $("#searchBtn").trigger("click");
+    return false;
+});
+
+
 
 $(function () {
 
